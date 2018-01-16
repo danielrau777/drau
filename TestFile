@@ -1,0 +1,72 @@
+<script>
+// create some arrays
+    a1 = [1,2,3,4,5,6,7,8,9];
+    a2 = ["a","b","c","d"];
+    
+    function showArrays() {
+        // do array manipulation
+        // display contents
+        var r = document.getElementById("results");
+        //display a1 in results
+        var s= "a1 contents:";
+        var g= "a2 contents:";
+        for(i=0; i<a1.length; i++) {
+            s+= a1[i] + ", ";
+
+        }
+        g= s + "<br>" + g;
+        for(i=0; i<a2.length; i++) {
+            g+= a2[i] + ", ";
+            
+        }
+        r.innerHTML = g;
+    }
+    
+    function pushpop() {
+        //push and pop contents, then display results
+        a1.push(25);
+        a1.pop();
+        a1.pop();
+        a1.shift();
+        a1.unshift(33);
+        a1 = mypush(a1,99);
+        showArrays();
+    }
+    
+    function mypush(a, e) { //add element e to array a
+        //create new array one larger than a
+        var aNew = new Array(a.length + 1);
+        for (i=0; i<a.length; i++)
+            aNew[i] = a[i]; // copies all existing elements of "a" to aNew
+        aNew[a.length] = e;
+        return aNew;
+    }
+    
+    function aConcat() {
+        // concatenate two arrays
+        var a3 = a1.concat(a2);
+        aDisplay(a3);
+    }
+    
+    function aDisplay(a) {
+        var w = document.getElementById("results");
+        var y = "";
+        for (i=0; i<a.length; i++) {
+            y += a[i] + ", ";
+        }
+        w.innerHTML = y;
+        
+    }
+
+</script>
+
+<input type=button 
+       value="test 1" 
+       onclick="showArrays()">
+<input type="button"
+       value="push and pop and shift"
+       onclick="pushpop()">
+<input type="button"
+       value="concatenation"
+       onclick="aConcat()">
+<h4 id="results">See results here</h4>
